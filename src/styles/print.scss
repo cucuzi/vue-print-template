@@ -1,0 +1,89 @@
+@media print {
+  .no-print {
+    display: none;
+  }
+}
+
+#print-main {
+  display: flex;
+  flex-direction: column;
+
+  .print-page {
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+
+    .print-row {
+      overflow: hidden;
+      white-space: nowrap;
+
+      .print-card {
+        position: relative;
+        border-style: solid;
+        user-select: none;
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: middle;
+        overflow: hidden;
+
+        > * {
+          cursor: pointer;
+        }
+
+        > div {
+          position: absolute;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .is-select {
+          border-width: 1px;
+          border-style: solid;
+          border-color: red !important;
+          margin-left: -1px;
+          margin-top: -1px;
+          z-index: 2000;
+
+          &:focus-visible {
+            outline: none;
+          }
+        }
+
+        .vue-barcode-element {
+          height: 100% !important;
+          width: 100% !important;
+          vertical-align: middle;
+        }
+
+        &:first-child {
+          margin-left: 0 !important;
+        }
+      }
+
+      .disabled-card {
+        > * {
+          cursor: default;
+        }
+      }
+
+      &:first-child {
+        .print-card {
+          margin-top: 0 !important;
+        }
+      }
+    }
+
+    .page-break {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 1px dashed #000;
+    }
+  }
+}
+
+#print-iframe {
+  display: none;
+}
